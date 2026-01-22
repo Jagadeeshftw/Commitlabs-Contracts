@@ -54,9 +54,13 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-cargo-
 
-      - name: Build Rust contracts with Cargo
+      - name: Build Rust contracts with Cargo (WASM)
         run: |
-          cargo build --target wasm32v1-none --release
+          # Build only the contract packages for WASM target (exclude integration_tests)
+          cargo build --target wasm32v1-none --release \
+            -p commitment_nft \
+            -p commitment_core \
+            -p attestation_engine
           echo "✓ Cargo build completed successfully"
 
       - name: Build Soroban contracts with Stellar CLI

@@ -342,11 +342,12 @@ fn test_gas_batch_attestations() {
     );
     
     // Multiple attestations
-    for i in 1..=5 {
+    let check_numbers = ["1", "2", "3", "4", "5"];
+    for check_num in check_numbers.iter() {
         let mut data = Map::new(&fixture.env);
         data.set(
             String::from_str(&fixture.env, "check_number"),
-            String::from_str(&fixture.env, &i.to_string()),
+            String::from_str(&fixture.env, check_num),
         );
         
         fixture.attestation_client.attest(
