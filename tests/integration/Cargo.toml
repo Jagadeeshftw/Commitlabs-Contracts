@@ -5,9 +5,7 @@ edition = "2021"
 
 # This is a test-only package - not a deployable contract
 # It should only be built for native targets (not wasm)
-
-# Explicitly exclude from workspace
-[workspace]
+# This package is excluded from the workspace (see root Cargo.toml exclude)
 
 [dev-dependencies]
 # Use the same soroban-sdk version as the contracts
